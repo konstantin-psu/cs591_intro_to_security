@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <assert.h>
+#include <stdbool.h>
 
 
 //the only global variable to keep track of all allocated pointers
@@ -12,7 +13,7 @@ struct pointers_tracker {
     size_t allcoated_size;
 };
 
-pointers_tracker tracker;
+struct pointers_tracker tracker;
 
 void init() {
    tracker.tot_size = 40;
@@ -179,5 +180,6 @@ int main() {
 
     fclose(fp);
     clean_exit();
+    return 0;
 }
 

@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.3)
-project(guesser)
+cmake_minimum_required(VERSION 2.8)
+project(Guesser)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")
 
-set(SOURCE_FILES main.cpp)
-add_executable(guesser ${SOURCE_FILES})
+set(SOURCE_FILES guesser.c)
+add_executable(app_exe ${SOURCE_FILES})
