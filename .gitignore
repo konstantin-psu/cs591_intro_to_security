@@ -80,9 +80,8 @@ crashlytics-build.properties
 
 #cmake
 #
-CMAKEFiles
-CMAKECache.txt
-CMAKELists.txt
-Makerfile
+CMakeFiles
+CMakeCache.txt
+Makefile
 *.cmake
 questioneer_exe
