@@ -44,14 +44,15 @@ void clean_exit() {
     exit(0);
 }
 
-void get_input(char * line, size_t size) {
-    bool status = fgets(line, size, stdin);
+void get_input(char ** line, size_t size) {
+    bool status = getline(line, &size, stdin);
     _assert(status);
 }
 
 void get_name(char * name, size_t * size) {
     printf("What is your name?\n");
-    get_input(name, *size);
+    *size = 0;
+    get_input(&name, *size);
     // Want to restrict input to English Alphabet in ASCII
     int i = 0;
     for (i = 0; i < *size; i++) {
@@ -88,7 +89,7 @@ int  number_length(char * line, size_t number_begin, size_t size) {
 
 void get_number(char * number, size_t * size, char name []) {
     printf("What is your magic number, %s?\n", name);
-    get_input(number, *size);
+    get_input(&number, *size);
     // Want to restrict input to English Alphabet in ASCII
     int i = 0;
     for (i = 0; i < *size; i++) {
@@ -119,7 +120,7 @@ int main() {
     int i = 0;          // iterator
     size_t size = 256;  // default input size
     size_t input_size = size; // input size 2 (will be modified during user data collection)
-    char * input_line = _calloc(size); //buffer for input line
+    char * input_line = NULL; //buffer for input line
 
     get_name(input_line, &input_size);
 
@@ -144,8 +145,8 @@ int main() {
 
 
     char answers [12] = "answers.txt";
-    FILE *fp = fopen("/home/kmacarenco/gitHubRepos/PSU/cs591_intro_to_security/homeworks/1/questioner/answers.txt", "r");
-    //FILE *fp = fopen("/home/konstantin/gitHubRepos/PSU/cs591_intro_to_security/homeworks/1/questioner/answers.txt", "r");
+    //FILE *fp = fopen("/home/kmacarenco/gitHubRepos/PSU/cs591_intro_to_security/homeworks/1/questioner/answers.txt", "r");
+    FILE *fp = fopen("/home/konstantin/gitHubRepos/PSU/cs591_intro_to_security/homeworks/1/questioner/answers.txt", "r");
     if (fp == NULL) { //TODO change to assert
         printf("Failed to open %s", answers);
         _assert(fp != NULL);
