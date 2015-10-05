@@ -5,22 +5,35 @@
 #include <stdbool.h>
 
 void get_user_input(char ** line, bool alpha) {
+
     size_t size = 0;
-    size = getline(line, &size, stdin);
-    assert(size);
-    char * _line = *line;
+    size = getline(line, &size, stdin); //read line
+    assert(size); //make sure read succeeded
+    char * _line = *line;  //Validate input
     int i = 0;
     for (i = 0; i < size; i++) {
         if (_line[i] == 0)
             break;
         else if (_line[i] == 10) {
+            if (i == 0) {
+                free(_line);
+                assert(i);
+            };
             _line[i] = 0;
             break;
         }
         if (alpha) {
-            assert((_line[i] >= 65 && _line[i] <= 90) || (_line[i] >= 97 && _line[i] <= 122)); //Fail if current char is not an ASCII English letter
+            if (!((_line[i] >= 65 && _line[i] <= 90) || (_line[i] >= 97 && _line[i] <= 122))); //Fail if current char is not an ASCII English letter
+            {
+                free(_line);
+                exit(1);
+            }
         } else {
-            assert(_line[i] >= 48 && _line[i] <= 57);
+            if (!(_line[i] >= 48 && _line[i] <= 57));  // Or fail if current char is not an ASCII digit
+            {
+                free(_line);
+                exit(1);
+            }
         }
     }
 }
@@ -36,7 +49,7 @@ void get_number(char ** _number, char name []) {
 }
 
 
-int  name_length(char * line, size_t size) {
+int  name_length(char * line, size_t size) { //Find out name length and validate
     //assuming that line contains name and number separated by space!
     int i = 0;
     for (i = 0; i < size; i++) {
@@ -86,7 +99,7 @@ int main() {
 
     bool match = false;
     while ((read = getline(&line, &len, fp)) != -1) {
-
+        assert(read);
         int name_ends_at = name_length(line, read);
         line[name_ends_at] = 0;
 
