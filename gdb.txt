@@ -1,0 +1,3 @@
+i r - inspect registers
+x/24x examine memory
+disassemble main (or any other function)

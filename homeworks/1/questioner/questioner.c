@@ -23,16 +23,16 @@ void get_user_input(char ** line, bool alpha) {
             break;
         }
         if (alpha) {
-            if (!((_line[i] >= 65 && _line[i] <= 90) || (_line[i] >= 97 && _line[i] <= 122))); //Fail if current char is not an ASCII English letter
+            if (!((_line[i] >= 65 && _line[i] <= 90) || (_line[i] >= 97 && _line[i] <= 122))) //Fail if current char is not an ASCII English letter
             {
                 free(_line);
-                exit(1);
+                exit(10);
             }
         } else {
-            if (!(_line[i] >= 48 && _line[i] <= 57));  // Or fail if current char is not an ASCII digit
+            if (!(_line[i] >= 48 && _line[i] <= 57))  // Or fail if current char is not an ASCII digit
             {
                 free(_line);
-                exit(1);
+                exit(20);
             }
         }
     }
@@ -94,7 +94,7 @@ int main() {
     get_name(&pname);
     get_number(&guessed_number, pname);
 
-    FILE *fp = fopen("/home/kmacarenco/gitHubRepos/PSU/cs591_intro_to_security/homeworks/1/questioner/answers.txt", "r");
+    FILE *fp = fopen("answers.txt", "r");
     if (fp == NULL)  assert(fp != NULL);
 
     bool match = false;
