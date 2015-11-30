@@ -1,0 +1,54 @@
+uname   bob         hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   alice       hashed   70ccd9007338d6d81dd3b6271621b9cf9a97ea00   Decoded   skipped
+uname   charlie     hashed   fafacfe665b46ebf609d577a0ecc9954b76d02ff   Decoded   skipped
+uname   diane       hashed   0bcf1df3cb81df3908d74d46b7fa9dd036b3b3c2   Decoded   skipped
+uname   abbie       hashed   b94133a7759fe16fe59bfc4f3e8f7a682ee36379   Decoded   tentacles
+uname   roy         hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   ladawn      hashed   222cfcf6ef61a07bd3fc69f6670c83ae98232d6a   Decoded   dampen
+uname   emery       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   nakesha     hashed   eaae6cd588408e65217189e528063cfc0ce4891b   Decoded 
+uname   eric        hashed   4dec4c7e8e74e25b0d6c3c2e5130f070dd7a3db1   Decoded
+uname   harold      hashed   a4757644f753917084fe29356c3bda73f3955881   Decoded   repayable
+uname   alexander   hashed   bc9383833bac22d136a1e3dbd8aa2afd3a376443   Decoded
+uname   keri        hashed   aec71c7a5534d12f78d7b9f15630e13126056604   Decoded
+uname   heriberto   hashed   f9e8765e1453e17d67e41bc54899c8d99538f7bc   Decoded   audiences
+uname   shon        hashed   5fc788ae0cd2e8ca056ebe11a9a85cf728692444   Decoded   becket
+uname   florance    hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   serena      hashed   899b460deeee12dd4cd90bbaebe5a4171345132a   Decoded   bagpipe
+uname   jasmin      hashed   7aa020f7ef6a89e54f289a51cf43044e2ef64159   Decoded   candle
+uname   elizabeth   hashed   222cfcf6ef61a07bd3fc69f6670c83ae98232d6a   Decoded   dampen
+uname   deann       hashed   675d6154c8870375ae678ef7045fe2b2b08bd710   Decoded   calder --Local only
+uname   audra       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   jerrica     hashed   cd99d959fd9e575298e6f5241eeb7fef46ee18ee   Decoded
+uname   amado       hashed   52b596b5aa9b47397e6148bcee1ab6b0a06e4bc0   Decoded   taegu --Local only
+uname   mack        hashed   d008eeb52b6d8679210cc9d1bbe5cec00606893f   Decoded   regalia
+uname   iesha       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   ellen       hashed   7aa020f7ef6a89e54f289a51cf43044e2ef64159   Decoded   candle
+uname   angelia     hashed   6f53cdb021aff10a78a9f28ac45fbddb69531932   Decoded   flocking
+uname   len         hashed   b886d2e6326dfd6468cbbf1eca112cfd6b09404d   Decoded
+uname   kiley       hashed   b886d2e6326dfd6468cbbf1eca112cfd6b09404d   Decoded
+uname   sonny       hashed   cd99d959fd9e575298e6f5241eeb7fef46ee18ee   Decoded
+uname   marcelino   hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   bianca      hashed   99214d97c852b43b97e26051c7e03aebdba0d2ad   Decoded
+uname   mickey      hashed   6a9a37af6cf5b18589847d90cddfc861aae1df65   Decoded   led
+uname   leroy       hashed   eaae6cd588408e65217189e528063cfc0ce4891b   Decoded
+uname   dewayne     hashed   e3972d9ae36ffc69fe5f64bc09604ba39dad75c1   Decoded   mejia --Local only
+uname   lavinia     hashed   675d6154c8870375ae678ef7045fe2b2b08bd710   Decoded   calder --Local only
+uname   gus         hashed   6f53cdb021aff10a78a9f28ac45fbddb69531932   Decoded   flocking
+uname   jim         hashed   56cf8820774b4f7cb89da89161a5bf7adfcca94f   Decoded   funneled
+uname   douglass    hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   cary        hashed   68c46e84d76d2e7e686e5158bf598909abd4e45b   Decoded   plain
+uname   shawn       hashed   e3972d9ae36ffc69fe5f64bc09604ba39dad75c1   Decoded   mejia --Local only
+uname   evette      hashed   6a9a37af6cf5b18589847d90cddfc861aae1df65   Decoded   led
+uname   elmer       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   lamont      hashed   56cf8820774b4f7cb89da89161a5bf7adfcca94f   Decoded   funneled
+uname   ashanti     hashed   f4776d7259f75475d39782afca92930931eeafb7   Decoded
+uname   elvera      hashed   bc9383833bac22d136a1e3dbd8aa2afd3a376443   Decoded
+uname   colene      hashed   d008eeb52b6d8679210cc9d1bbe5cec00606893f   Decoded   regalia
+uname   jonie       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   leone       hashed   71f7833130dcda704903bece4c86b02c7cd10755   Decoded   palmistry
+uname   tyson       hashed   52b596b5aa9b47397e6148bcee1ab6b0a06e4bc0   Decoded   taegu --Local only
+uname   lorelei     hashed   227796435e380f6b802fad72bab7e5cb2bf20448   Decoded   serbs --Local only
+uname   moses       hashed   5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8   Decoded   password
+uname   brigid      hashed   aec71c7a5534d12f78d7b9f15630e13126056604   Decoded
+uname   isela       hashed   f4776d7259f75475d39782afca92930931eeafb7   Decoded
