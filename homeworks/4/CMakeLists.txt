@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
-project(questioneer)
+cmake_minimum_required(VERSION 3.3)
+project(sec_hw4)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 add_executable(attack01 attack01.c)
 add_executable(attack02 attack02.c)

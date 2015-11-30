@@ -1,0 +1,153 @@
+Assumption: stack is a safe place.
+Fixing leaks (reacting) is not a good idea, a hacker will always find another way to attack the system.
+Stack buffer overflow.
+Modify return address, for our instruction. (Assuming that there is no any other application that will try to modify the stack).
+Atacker assumes that he is the only one in control of the system, but what if there is a program that checks that stack is being modified?
+
+What if we sneack around. by putting a special value on the stack after saved eip, and before saved ebp. (Stack canary).
+
+Stack canary is a special value *check flag.
+What if befor we leave we check canary value and verify that canary has not been modified. (Conditional check).
+Modified canary serves as indication of stack attack. ( Canary name comes from old time when canaries where used to control air quality in coal mines, canary would die if 
+air poluted).
+
+Canary placememnt is arbitrary.
+
+How to prevent Hacker from restoring canary value after attack?
+
+Stackguard: Automatic adaptive detection and prevention of buffer overflow attacks. (Slides page 14)
+
+Normally compiler generates instructions in assembly. Whaen stack guard is on a random value is pushed on the stack, then when leave performed, 
+if random value changed ( do something to warn user about it).
+
+Breaking Naive StackGuard.
+
+How to do it?
+    If canary picked during compilation, -> Use gdb to figure out the canary value, and restore it after attack.
+    Same binary is distributed to every one, attacker gets hands on the binary and figure out the canary value in gdb ( or any other compiler ).
+    Which makes a life of attakcer a bit harder, The canary value needs to placed precisely where it was, although hacker can 
+        just try multiple times to figure out correct palcement of the canary value.
+    
+    Improvement #1: What if we ramdomize canary value for every binary?
+
+    Improvement #2: "Terminator" StackGuard. Make harder for the attacker to guess canary.
+            Push all possible terminators to the stack, enforcing scanf (or all other scaners) to stop. Even if atacker can guess correct value, 
+            the return will never be overwritten because scanf will stumble in to terminator "terminator" stackguard.
+            Scanf stops 
+
+    All these approaches as like in cold war: arms raise, every time attackers find new vulnerability, good guys patch the hole.
+
+    How to break terminator stackguard?
+        We are protecting only eip, what about the rest? For example base pointer?
+
+Leave
+    set esp to 32 bi address in ebp
+    loads the saved frame pointer from the stack.
+
+    Basic attack idea:
+        inject a fake frame on the stack
+        when the caller returns it gets its eip from your fake stack frame.
+
+        Overwrite everything up to canary. Move base pointer to redirect caller to a wrong location.      
+
+    Did we improve the situation? Hard to tell, but it's better than it was.
+
+    We have new defensive technique, is it still worth doing? (Is it overkill? Microsoft says it is not, it is worth doing
+                                                                               GCC and Linux distributions say yes.
+                                                                               For best effect use it with DEP and ASLR.
+
+    Question? Explain how canary works.
+
+    StackGuard paper: cowan stackguard - READ!!!!!!!!
+    
+    Address Space Layout Randomization 
+
+        Traditional explits rquire attacker to know addresses, (we can roughly estimate the addresses, and use NO OP sled to get to the right instructions)
+
+        The way to break this assumption is Randomize Address Space Layout.
+
+        Idea is to ranomize addresses in the stack (Main Stack), executables (code, uninitialized data, initialized data)  and mapped (Heap, Dynamic libraries, Thread stacks, shared memory).
+        
+    Sometimes randomization is not possible, especially programm is big and requires lots of stack space to run.
+
+    Advantages: doesn't require reqompilation, no overhead, transparent to application.
+
+    When to Ranodmize?
+        Whean a process starts - constant randomization for all child processes. 
+            Is a little tricky.
+                Hard on high performance servers. That use fork to spawn (serve) new requests.
+        Every time after fork, re-randomize child process. (Since fork copies all data for the child process, that savs time, child process starts with the exact copy of the parent process).
+                If child never writes to parent memory, it can even use parents memory pages without creating/copying it's own.
+                    If using this model "random seed is never changed in children" so attacker can try multiple times to figure out the way memory randomization.
+                    To overcome this we need to rerandomize memory every time new process is spawn/forked.
+
+        Does it solves the problem?
+            Try to attack, guess X probe
+                - if correct = Success = Root
+                - Failur  = detectable crash or now root.
+                - Assume 32 bit arch which works out to about 16 its of randomness available.
+
+            Scenario 1 process isnot randomized after each probe.
+
+            Scenario 2 The adddress space is randomized after each probe.
+
+            Which scenario is better? How hard it makes for the attacker to create an exploit.
+
+                What is the probability of an attacer succeeding?
+                    Image we have 65000 balls and we put them into one bucket, and do not randomize every time?
+                    Seven balls represent correct addresses, on each try attacker have a increased chance of getting the correct ball.
+
+                    Success by nth try: n/2^16
+                    On expectation he will have to try about 2^n-1 times. (2^16 +1)/2
+
+                If balls replaced every time - rereandomized every time hacker attacks.
+                
+                Get the ball out of the bucket, and put ball back (probability of getting the same ball every time).
+                    Only one ball is correct one.
+                    
+                    Probability of succcess by nth try  = 1/2^16
+                    Expected number of probes = 2^16.
+
+                    So rerandomization gives us 1 bit of security. 2^16 vs 2^15  (we double hackers work)
+                    
+                        What is the cost? Change how fork process works... So what is the right way to do it?
+                        
+                        This approach helps a lot in 64 bits space. (is 32 bit a big number? Not so much, but still better than 2^16)
+
+
+Return Oriented Programming attacks.
+
+What are the steps attacker needs to take to achieve it's goal?
+    Find Vulnerability.
+    Craft Exploit (Shellcode + payload)
+    Launch the attack
+    Inject Shellcode
+    Take control of eip  * Stackguard helps to avoid this stip
+    Execute injected code  * DEP check if memory where shellcode is written is executable
+    2nd stage 
+    Profit
+
+
+Another way to do it: THe Kill chain ROP
+
+    Discover
+    Craft
+    Launch
+    Inject data
+    Take control of eip
+    2nd stage
+    profit
+
+So another way to Attack?
+    What's after our stack frame? Empty space? No There will be another stack (set of stacks), so how do we find next stack sets?
+        Find base pointer!
+        Put whole bunch of saved instruction pointers on the stack. Find short snippets of code that do something usefull (Gadgets)
+        FIgure out the right secquence of gadget to implement your payload
+        Inject data ot write the addresses of your gadgets into the reutrn addresses of successive stack frames.
+    
+    Doesn't require code injection!
+
+       Much more difficult than simple stack smashing, essentially requiers a compiler.
+
+        Depends on the presence of enough useful gadgets at predictable locations in  memory    
+        Inject data onto the stack so taht addresses of instructions somethings somethings

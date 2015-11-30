@@ -1,0 +1,5 @@
+So Far I was able to complete problems  1 - 7. The hardest part was to figure out how to work efficiently work with gdb, and to understand memory in "examine memory".
+
+This assignment is a lot of fun, I really enjoyed "real hacking" experience.
+
+Everything works fine, no problems with the VM.
